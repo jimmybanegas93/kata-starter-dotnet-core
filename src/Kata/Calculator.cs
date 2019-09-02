@@ -1,4 +1,5 @@
-using System;
+using System.Linq;
+using static System.Int32;
 
 namespace Kata
 {
@@ -11,7 +12,20 @@ namespace Kata
                 return 0;
             }
 
-            return int.Parse(userInput);
+            var numbers = userInput.Split(",");
+
+            if (numbers.Length == 1)
+            {
+                return Parse(userInput);
+            }
+
+            var n1 = Parse(numbers[0]);
+            var n2 = Parse(numbers[1]);
+
+            return n1 + n2;
+
+//            return numbers.Select(n => Parse(n)).Sum();
+
         }
     }
 }
