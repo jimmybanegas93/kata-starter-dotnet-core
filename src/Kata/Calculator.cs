@@ -28,9 +28,9 @@ namespace Kata
 
             var negative = numbers.Where(n => n < 0).ToArray();
 
-            if (negative.Count() > 0)
+            if (negative.Any())
             {
-                throw  new Exception($"negatives not allowed: {negative[0]}");
+                throw  new Exception($"negatives not allowed: {string.Join(", ", negative)}");
             }
           
             
