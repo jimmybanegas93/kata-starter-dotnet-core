@@ -10,8 +10,28 @@ namespace Kata
             if (string.IsNullOrEmpty(userInput))
                 return 0;
 
-            var numbers = userInput
-                .Split(new[] {",", "\n"}, StringSplitOptions.None)
+            var separator = new[] {",", "\n"};
+            var input = userInput;
+
+            if (input.StartsWith("//"))
+            {
+                var parts = input.Split('\n');
+
+                separator = new[]
+                {
+                    parts
+                        .First()
+                        .Replace("//", "")
+                        .Replace("[", "")
+                        .Replace("]", "")
+                };
+
+                input = parts.Last();
+            }
+            
+            
+            var numbers = input
+                .Split(separator, StringSplitOptions.None)
                 .Select(int.Parse)
                 .Where(n => n < 1000)
                 .ToArray();
