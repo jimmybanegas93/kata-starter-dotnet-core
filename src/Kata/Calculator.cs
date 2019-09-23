@@ -17,19 +17,18 @@ namespace Kata
             {
                 var parts = input.Split('\n');
 
-                separator = new[]
-                {
+                separator =
                     parts
                         .First()
                         .Replace("//", "")
                         .Replace("[", "")
-                        .Replace("]", "")
-                };
+                        .Split("]");
+                ;
 
                 input = parts.Last();
             }
-            
-            
+
+
             var numbers = input
                 .Split(separator, StringSplitOptions.None)
                 .Select(int.Parse)
