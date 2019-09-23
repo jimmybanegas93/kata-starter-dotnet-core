@@ -10,7 +10,10 @@ namespace Kata
             if(string.IsNullOrEmpty(userInput))
                 return 0;
 
-            var numbers = userInput.Split(",").Select(int.Parse) .ToArray();
+            var numbers = userInput
+                .Split(new []{",", "\n"}, StringSplitOptions.None)
+                .Select(int.Parse)
+                .ToArray();
             
             return numbers.Sum();
         }
