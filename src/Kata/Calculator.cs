@@ -11,7 +11,7 @@ namespace Kata
                 return 0;
 
             var numbers = userInput
-                .Split(",")
+                .Split(new[] {",", "\n"}, StringSplitOptions.None)
                 .Select(int.Parse)
                 .ToArray();
 
