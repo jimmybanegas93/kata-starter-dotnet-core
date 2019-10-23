@@ -10,8 +10,22 @@ namespace Kata
             if(string.IsNullOrEmpty(userInput))
                 return 0;
 
-            var numbers = userInput
-                .Split(new[] {",", "\n"}, StringSplitOptions.None)
+            var newInput = userInput;
+
+            var delimiters = new[] {",", "\n"};
+
+
+            if (userInput.StartsWith("//"))
+            {
+                var splitted = userInput.Split("\n");
+                
+                delimiters = new string[]{ splitted.First().Replace("//", "")};
+
+                newInput = splitted.Last();
+            }
+            
+            var numbers = newInput
+                .Split(delimiters, StringSplitOptions.None)
                 .Select(int.Parse)
                 .ToArray();
 
