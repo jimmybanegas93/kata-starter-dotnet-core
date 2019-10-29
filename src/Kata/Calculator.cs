@@ -13,14 +13,8 @@ namespace Kata
 
             var numbers = userInput.Split(",").Select(int.Parse).ToArray();
 
+            return numbers.Sum();
 
-            if (numbers.Length == 1)
-            {
-                return numbers.First();
-            }
-            
-
-            return numbers.First() + numbers.Last();
         }
     }
 }
