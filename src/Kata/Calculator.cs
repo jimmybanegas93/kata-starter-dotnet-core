@@ -18,12 +18,12 @@ namespace Kata
             if (input.StartsWith("//"))
             {
                 var parts = input.Split("\n");
-                delimiters = new[] {parts
+                delimiters = parts
                     .First()
                     .Replace("//", "")
                     .Replace("[", "")
-                    .Replace("]", "")
-                };
+                    .Split("]");
+            
 
                 input = parts.Last();
             }
